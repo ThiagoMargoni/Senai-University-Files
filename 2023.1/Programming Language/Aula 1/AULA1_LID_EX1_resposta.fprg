@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="dsadm"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-01-27 10:06:20 "/>
+        <attribute name="created" value="ZHNhZG07RVNONTAxRDEyNTM2NjY7MjAyMy0wMS0yNzsiMDk6NDA6MTQgIjsyNTI0"/>
+        <attribute name="edited" value="ZHNhZG07RVNONTAxRDEyNTM2NjY7MjAyMy0wMS0yNzsiMTA6MDY6MjAgIjsxOzI2MjM="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="n1, n2, res" type="Integer" array="False" size=""/>
+            <output expression="&quot;DIGITE UM NUMERO INTEIRO&quot;" newline="True"/>
+            <input variable="n1"/>
+            <output expression="&quot;DIGITE OUTRO NUMERO INTEIRO&quot;" newline="True"/>
+            <input variable="n2"/>
+            <assign variable="res" expression="n1+n2"/>
+            <output expression="&quot;O RESULTADO DA SOMA &#201; IGUAL A &quot; &amp;res" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

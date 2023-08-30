@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="dsadm"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-02-03 10:22:10 "/>
+        <attribute name="created" value="ZHNhZG07RVNONTAxRDEyNTM2OTY7MjAyMy0wMi0wMzsiMTA6MTk6MTAgIjsyNTE2"/>
+        <attribute name="edited" value="ZHNhZG07RVNONTAxRDEyNTM2OTY7MjAyMy0wMi0wMzsiMTA6MjI6MTAgIjsxOzI2MTg="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="nPi, raio, area" type="Real" array="False" size=""/>
+            <output expression="&quot;Digite o valor do raio da circunfer&#234;ncia que deseja calcular&quot;" newline="True"/>
+            <input variable="raio"/>
+            <assign variable="nPi" expression="3.14"/>
+            <assign variable="area" expression="pi*(raio*raio)"/>
+            <output expression="&quot;A &#225;rea da circunfer&#234;ncia &#233;:&quot;&amp;area" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

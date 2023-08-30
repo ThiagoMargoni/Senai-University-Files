@@ -1,0 +1,14 @@
+conectar azure no mysql sem barramento da rede
+
+- gerar banco de dados azure
+- copiar link para acesso
+- criar nova conexão
+- usar as mesmas credenciais que na azure
+- host como link
+- botar senha criada na azure
+
+conectar azure no mysql com barramento da rede
+
+- clicar em conectar na página do banco
+- clicar em powershell > criar armazenamento
+- pronto, mysql normal pelo powershell

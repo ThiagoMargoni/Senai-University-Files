@@ -1,0 +1,119 @@
+# # AULA 9 - CRIANDO MÓDULOS PERSONALIZADOS E TRATANDO EXECEÇÕES
+# def fatorial(n):
+#     f=1
+#     for c in range(1,n+1):
+#         f*=c
+#     return f
+#
+# def triplo(n):
+#     return 3*n
+#
+# def dobro(n):
+#     return 2*n
+#
+# somar = lambda a,b : a+b
+# subtrair = lambda a,b : a-b
+# multiplicar = lambda a,b : a*b
+#
+# def dividir(a,b):
+#     if b!=0:
+#         return a/b
+#     else:
+#         return None
+#
+# num=int(input("Digite um numero inteiro: "))
+# fat=fatorial(num)
+# dobrado=dobro(num)
+# print(f"Fatorial de {num} é {fat}")
+# print(f"Dobro de {num} é {dobrado}")
+######################################################################################################
+# import minhasFuncoes
+#
+# num=int(input("Digite um numero inteiro: "))
+# fat=minhasFuncoes.fatorial(num)
+# dobrado=minhasFuncoes.dobro(num)
+# print(f"Fatorial de {num} é {fat}")
+# print(f"Dobro de {num} é {dobrado}")
+#######################################################################################################
+# import minhasFuncoes as mf
+#
+# num=int(input("Digite um numero inteiro: "))
+# fat=mf.fatorial(num)
+# dobrado=mf.dobro(num)
+# print(f"Fatorial de {num} é {fat}")
+# print(f"Dobro de {num} é {dobrado}")
+############################################################################################################
+import os
+
+# #CRIANDO PACOTES
+# from minhasFuncoes import calculos,plotaGraficos,tratarNumerosInput
+#
+# num=int(input("Digite um numero inteiro: "))
+# fat=calculos.fatorial(num)
+# print(f"Fatorial de {num} é {fat}")
+# dobrado=calculos.dobro(tratarNumerosInput.entradaDadosNumericos())
+# print(f"Dobro de {dobrado/2} é {dobrado}")
+# plotaGraficos.imprimeFigura(1,2,-15)
+
+#TRY EXCEPT ELSE FINALY
+#TRY testa a ação
+#EXCEPT captura o erro
+#ELSE executa a ação caso não haja erros
+#FINALY será executado independente se existir erros ou não
+# from minhasFuncoes import calculos,plotaGraficos,tratarNumerosInput
+#
+# while True:
+#     a = int(input("Digite numerador: "))
+#     b = int(input("Digite denominador: "))
+#     resultado=calculos.dividir(a,b)
+#     print(f"Divisão de {a}/{b} é {resultado}")
+############################################################################################
+# #Tratamento genérico
+# from minhasFuncoes import calculos,plotaGraficos,tratarNumerosInput
+#
+# while True:
+#     try:
+#         a = int(input("Digite numerador: "))
+#         b = int(input("Digite denominador: "))
+#         resultado=calculos.dividir(a,b)
+#     except:
+#         print("Você ERRROUUU!")
+#     else:
+#         print(f"Divisão de {a}/{b} é {resultado}")
+#     finally:
+#         print("Aqui é executado independente de qualquer coisa!")
+###################################################################################################
+# #Tratamento especifico
+# from minhasFuncoes import calculos,plotaGraficos,tratarNumerosInput
+#
+# while True:
+#     try:
+#         a = int(input("Digite numerador: "))
+#         b = int(input("Digite denominador: "))
+#         resultado=calculos.dividir(a,b)
+#     except ValueError:
+#         print("Você não digitou um numero válido!")
+#     except ZeroDivisionError:
+#         print("Você tentou dividir por zero!")
+#     except KeyboardInterrupt:
+#         print("Você que forçar a saida do programa mesmo!")
+#     else:
+#         print(f"Divisão de {a}/{b} é {resultado}")
+#     finally:
+#         print("Aqui é executado independente de qualquer coisa!")
+
+# #Tratamento especifico
+# from minhasFuncoes import calculos,plotaGraficos,tratarNumerosInput
+#
+# while True:
+#     try:
+#         a = int(input("Digite numerador: "))
+#         b = int(input("Digite denominador: "))
+#         resultado=calculos.dividir(a,b)
+#     except Exception as erro:
+#         print(f"O erro capturado foi {erro}")
+#     else:
+#         print(f"Divisão de {a}/{b} é {resultado}")
+#     finally:
+#         print("Aqui é executado independente de qualquer coisa!")
+

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="dsadm"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-02-03 10:35:26 "/>
+        <attribute name="created" value="ZHNhZG07RVNONTAxRDEyNTM2OTY7MjAyMy0wMi0wMzsiMTA6MjI6MTIgIjsyNTEy"/>
+        <attribute name="edited" value="ZHNhZG07RVNONTAxRDEyNTM2OTY7MjAyMy0wMi0wMzsiMTA6MzU6MjYgIjs0OzI2MzI="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="nRepeti, aux" type="Integer" array="False" size=""/>
+            <declare name="media, aux2" type="Real" array="False" size=""/>
+            <output expression="&quot;Digite Quantas Avalia&#231;&#245;es ser&#227;o inseridas&quot;" newline="True"/>
+            <input variable="nRepeti"/>
+            <assign variable="media" expression="0"/>
+            <assign variable="aux" expression="0"/>
+            <while expression="aux &lt; nRepeti">
+                <output expression="&quot;Digite a &quot;&amp;(aux+1)&amp;&quot;&#170; nota&quot;" newline="True"/>
+                <input variable="aux2"/>
+                <assign variable="media" expression="media + aux2"/>
+                <assign variable="aux" expression="aux+1"/>
+            </while>
+            <assign variable="media" expression="media/nRepeti"/>
+            <if expression="media&gt;= 7">
+                <then>
+                    <output expression="&quot;Parab&#233;ns por ser Aprovado com a m&#233;dia igual a: &quot;&amp;media" newline="True"/>
+                </then>
+                <else>
+                    <output expression="&quot;Voc&#234; foi reprovado com a m&#233;dia igual a: &quot;&amp;media" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

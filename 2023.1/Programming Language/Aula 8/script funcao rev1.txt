@@ -1,0 +1,197 @@
+# Funções sem parametro e sem retorno
+'''
+def imprimirMsg():       #definição da função
+    print("Olá Mundo!")
+imprimirMsg()
+
+def somar():
+    res = int(input("Digite um numero: ")) + int(input("Digite outro numero: "))
+    # A variável res é uma variável local, só é reconhecida dentro da função
+    print(res)
+
+somar()
+#print(res)
+'''
+'''
+#cuidado com o manuseio de variaveis globais em funções
+a=1 #variável global
+def somar():
+    a=5
+    print(a)
+somar()
+print(a)
+'''
+'''
+inc=0
+def incrementar():
+    acc=0
+    while inc<10 and acc<10: # As variáveis globais são reconhecidas diretamente
+                             # dentro de funções, mas não é aconselhável atualiza-las
+        print(acc, end=" ")
+        acc+=1
+    print()
+    print(inc)
+incrementar()
+'''
+'''
+def somar(a,b): #argumentos ou parâmetros
+    print(a+b)
+
+somar(100,100)
+somar(0.1,1.98)
+somar("100","1010")
+'''
+'''
+def somar(a=float(input("Digite o primeiro numero: ")),b=float(input("Digite o segundo numero: "))):
+    print(f"Resultado: {a+b:5.2f}")
+
+somar(4,4)
+somar()
+'''
+'''
+def somar(a,b): #argumentos ou parâmetros
+    print(a+b)
+
+print(somar(4,4))
+'''
+
+# ##### CUIDADO EM MANUSEAR LISTAS E DICIONARIOS COM ARGUMENTOS DE FUNÇÕES
+# def acrescentaItensLista(lista, item):
+#     lista.append(item)
+#     print(lista)
+#
+# numeros = [10, 20, 30]
+# print(numeros)
+# acrescentaItensLista(numeros, 100)
+# print(numeros)
+
+# ##### CUIDADO EM MANUSEAR LISTAS E DICIONARIOS COM ARGUMENTOS DE FUNÇÕES
+# def acrescentaItensLista(lista, item):
+#     lista.append(item)
+#     print(lista)
+#
+# numeros = [10, 20, 30]
+# print(numeros)
+# acrescentaItensLista(numeros.copy(), 100)
+# print(numeros)
+
+
+'''
+def somar(a,b):
+    res=a+b
+    texto="Resultado: "
+    return res
+
+print(somar(4,4))
+'''
+# # retorno de diversos valores
+# def somar(a,b):
+#     soma=a+b
+#     sub=a-b
+#     texto1="Resultado soma: "
+#     texto2="Resultado subtração: "
+#     return texto1, soma, texto2, sub
+#
+# print(somar(4,4))
+
+# # retorno de diversos valores
+# def somar(a,b):
+#     soma=a+b
+#     sub=a-b
+#     texto1="Resultado soma: "
+#     texto2="Resultado subtração: "
+#     return texto1, soma, texto2, sub
+#
+# texto1,soma,texto2,sub=(somar(4,4))
+# print(type(somar(0,0)))
+# print(type(texto1))
+# print(type(texto2))
+# print(type(soma))
+# print(type(sub))
+# print(texto1,soma,texto2,sub)
+
+# # funções lambda
+# soma = lambda a,b : a+b
+# print(soma(2,2))
+
+#funções recursivas
+def fatorial (n):
+    if n==0 or n==1:
+        return 1
+    else:
+        return n * fatorial(n-1) #chamada recursiva fatorial dentro dela mesma
+
+numero=int(input("Digite um número para calcular o seu fatorial: "))
+print(f"O fatorial de {numero} é {fatorial(numero)}")
+
+
+
+'''
+#Exemplo calculadora em python com funções
+def main():
+    #Função principal onde serão chamadas as demais funções
+    somar(entradaDadosNumericos(),entradaDadosNumericos())
+
+
+def somar(a,b):
+    #Função que realiza a soma de dois numeros(somente numeros)
+    print(a)
+    print(b)
+    print(f"Resultado: {a + b:5.2f}")
+
+def subtrair(a,b):
+    #Função que realiza a soma de dois numeros(somente numeros)
+    print(f"Resultado: {a + b:5.2f}")
+
+def entradaDadosNumericos():
+    #Função que testa a entrada e permite a execução do programa somente com números
+    # .1 ou 0.1 ou +0.1 ou -0.1 ou sem nenhum ponto ok
+    # ,1  ou 0,1 ou +0,1 ou -0,1 ou sem nenhuma virgula ok
+    while True:
+        mem = num = input("Digite um numero inteiro ou real: ")  # num ainda é string e string se comporta como lista
+        num=num.replace(",",".",len(num))
+        if num.count(".") == 0 or num.count(".") == 1:  # testa a incidencia ou não de um unico ponto de separação da parte inteira para a decimal
+            teste1=True
+        else:
+            teste1=False
+        if num.count("-")== 0 and (num[0] == "+" and num.count("+")==1):  #testa a incidencia de um unico sinal de + e sua posição
+            teste2=True
+        else:
+            teste2=False
+        if num.count("+") == 0 and  (num[0] == "-" and num.count("-")==1): #testa a incidencia de um unico sinal de - e sua posição
+            teste3=True
+        else:
+            teste3=False
+        if num.count("+") == 0  and num.count("-") == 0:
+            teste4=True
+        else:
+            teste4=False
+        num = num.replace("+","").replace("-","").replace(".","")
+        print(teste1,teste2,teste3,num.isdecimal())
+        if(teste1 and (teste2 or teste3 or teste4) and num.isdecimal()):
+            mem=float(mem.replace("," , "."))
+            return mem
+        else:
+            print("Não pode ser número!")
+
+
+
+main()
+'''
+
+#EXERCICIO 2
+import matplotlib.pyplot as plt
+"exemplo do plot pelo matplotlib
+#tamanho da figura
+plt.figure(figsize = (10,6))
+#define X, Y, tipo de marcador(nenhum nesse caso) e cor
+plt.grid()
+plt.plot(x,y, marker = '', color = 'red')
+#define título
+plt.title('Gráfico f(x)')
+#define nome a mostrar no eixo x
+plt.xlabel('Eixo x')
+#define nome a mostrar no eixo y
+plt.ylabel('Eixo y')
+#faz a plotagem
+plt.show()

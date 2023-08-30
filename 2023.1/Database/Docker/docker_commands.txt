@@ -1,0 +1,12 @@
+wls --install
+wls --update
+docker pull mysql
+docker run --name first_docker_mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:latest = cria o banco
+docker ps = mostra todos os rodando 
+docker ps -a = mostra todos
+docker stop first_docker_mysql = para o banco
+docker start first_docker_mysql = starta o banco
+docker rm first_docker_mysql -f = deleta o banco
+docker inspect first_docker_mysql = mostra informações
+docker inspect first_docker_mysql | findstr IPAddress = mostra informação específica
+mysql -h 172.17.0.2 -protocol=tcp -u root -p

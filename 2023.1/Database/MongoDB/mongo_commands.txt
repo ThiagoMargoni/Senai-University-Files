@@ -1,0 +1,18 @@
+baixar mongo shell e setar variavéis de ambiente 
+docker pull mongo
+docker run --name mongoDocker -d mongo = criar container mongo
+docker exec -it mongoDocker bash = executar container mongo 
+mongosh = entrar mongodb
+show dbs = mostre bancos de dados
+use company = cria automaticamente banco se não existir e começa a usar 
+show collections = mostra 'tabelas'
+db.employees.insertOne({ name: 'Nome do Cara', hired_date: new Date(), salary: 15000, job: 'Senior Developer' }) = cria 'tabela' e insere dados
+db.employees.find() = mostra a tabela escrita com o dados
+db.employees.insertMany([{},{}]) = Inserir mais de um dado
+db.employees.find({ job: 'Senior Developer' }) = Select com where
+db.employees.find({job: {$regex: 'developer', $options: 'i'} }) = Select com o like (apenas string), dando um ignore case
+db.employees.find({salary: {$gte: 5000 }}) = Select buscando < que 5K
+	- gte = greater than or equal
+	- gt = greater than
+	- lte = less than or equal
+	- lt =  less than 

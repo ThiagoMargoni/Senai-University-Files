@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="danna"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-02-06 05:03:55 "/>
+        <attribute name="created" value="ZGFubmE7REFOTkE7MjAyMy0wMi0wNjsiMDQ6NTk6MzAgIjsyMDU5"/>
+        <attribute name="edited" value="ZGFubmE7REFOTkE7MjAyMy0wMi0wNjsiMDU6MDM6NTUgIjsxOzIxNjQ="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="preco, km, litro" type="Real" array="False" size=""/>
+            <declare name="resposta" type="String" array="False" size=""/>
+            <assign variable="resposta" expression="&quot;&quot;"/>
+            <while expression="resposta != &quot;sim&quot;">
+                <output expression="&quot;Digite a qtd de kms rodados na viagem&quot;" newline="True"/>
+                <input variable="km"/>
+                <output expression="&quot;Digite o valor do combust&#237;vel colocado no carro&quot;" newline="True"/>
+                <input variable="preco"/>
+                <assign variable="litro" expression="km/13"/>
+                <assign variable="preco" expression="preco*litro"/>
+                <output expression="&quot;Na viagem foi usado um total de &quot;&amp;litro&amp;&quot; litro(s), custando um total de R$: &quot;&amp;preco" newline="True"/>
+                <output expression="&quot;Deseja sair do programa? (sim ou n&#227;o)&quot;" newline="True"/>
+                <input variable="resposta"/>
+            </while>
+        </body>
+    </function>
+</flowgorithm>

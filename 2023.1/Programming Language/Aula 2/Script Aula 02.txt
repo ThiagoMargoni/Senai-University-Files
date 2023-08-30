@@ -1,0 +1,90 @@
+'''
+Comentários de mais de uma linha são com esses 3 apóstrofos
+Comentários de linhas individuais deverão ser feitos com cerquilha (#)
+Comente tudo que você achar que vai ajudar os outros a entender seu
+software, porque no final vai inclusive te ajudar a entender o que
+você mesmo já resolveu nesse código
+aula_02 variáveis, operadores lógicos, relacionais e aritméticas
+Cuidado: a linguagem Python é case sensitive, ou seja, ela
+diferencia letras maiúsculas de minúsculas Exemplo c1 diferente C1
+'''
+
+## função default print para imprimir coisas no console
+## essa função é do tipo sobrecarregada
+
+print(6-4)
+print(10/3)     # retorna sempre um valor com casas decimais
+print(10//3)    # retorna só a parte inteira
+print(2*3)      # multiplicação
+print(2**3)     # potencialiação"
+print("######################################################################################")
+
+## Criação de variáveis, identificadores e tipos
+a = 5          # tipo inteiro 
+b = 6.9999     # tipo numero real (float)
+c = "Senai"    # tipo string 
+teste = True   # tipo booleano 
+res = a + b    # formas de atribuição no python
+x,y,z = 10,20,30
+xx=yy=zz=100
+
+print("Resultado a+b = " , res)
+print("a é " , type(a))  # A função type retorna o tipo entendido pelo python
+print("b é " , type(b))
+print("c é " , type(c))
+print("teste é " , type(teste))
+print("res é " , type(res))
+print("Os valores de x, y e z são respectivamente: ", x,y,z)
+print("Os valores de xx, yy e zz são respectivamente: ", xx,yy,zz)
+print("######################################################################################")
+
+## OPERADORES ARITMÉTICOS
+##  **exponenciação    *multiplicação      /divisão com casas decimais   //divisão sem casas decimais
+##  %resto da divisão   + adição      -subtração
+
+n1=10
+n2=20
+n3=5.99
+n4=0.666345
+n5 =+ 10  # igual a sintaxe n5 = n5 + 10 funciona com qualquer outro operador aritmético
+
+print("adição: " , n1+n2)
+print("multiplicação: " , n1*n3)
+print("divisão: " , n1/n2)
+print("divisão: " , n3//n4)
+print("resto divisão: ", n1%n2)
+print("potenciação: ", n1**n4)
+print("adição forma contraída: ", n5)
+print("######################################################################################")
+
+## OPERADORES RELACIONAIS
+print("a é igual a c" , a==b)
+print("a é maior que c" , a>b)
+print("a é menor que c" , a<b)
+print("a é diferente de c" , a!=b)
+print("######################################################################################")
+
+## OPERADORES LÓGICOS
+print(" Essas afirmações são ", (a==b) and (a<b))
+print(" Essas afirmações são ", (a!=b) and (a<b))
+print(" Essas afirmações são ", (a!=b) or (a<b))
+print(" Essas afirmações são ", not(a==b) and (a<b))
+print("######################################################################################")
+
+## operadores bitwise
+## manipulam bits individualmente
+## & (and) ^(xor) |(or) ~(inverte) <<(desloca esquerda) >>(desloca direita)
+
+dado1=0b111111  ## prefixo para escrever em numeração binária
+dado2=0b000001
+print(bin(dado1)) # função bin() retorna um valor no formato binário
+print(bin(dado2))
+print(bin(dado1&dado2))
+print(bin(dado1^dado2))
+print(bin(dado1|dado2))
+print(~dado2)  # O resultado é uma conversão em complemento de 2
+print(bin(~dado2)) # A conversão não é usual, evitar!!!
+print(bin(dado2<<2))
+print(bin(dado1>>1))
+
+

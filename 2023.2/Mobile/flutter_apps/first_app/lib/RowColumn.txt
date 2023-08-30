@@ -1,0 +1,37 @@
+Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(color: Colors.green, width: 100, height: 100,),
+            Container(color: Colors.purple, width: 100, height: 100,)
+          ],
+        ) 
+Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(color: Colors.red, width: 100, height: 100,),
+                Container(color: Colors.blue, width: 100, height: 100,),
+                Container(color: Colors.white, width: 100, height: 100,),
+              ],
+            ),
+        // Stack(
+        //   children: [
+        //     Row(
+        //       mainAxisAlignment: MainAxisAlignment.end,
+        //       crossAxisAlignment: CrossAxisAlignment.start,
+        //       children: [
+        //         Container(color: Colors.red, width: 100, height: 100,),
+        //         Container(color: Colors.blue, width: 100, height: 100,)
+        //       ],
+        //     ),
+        //     Column(
+        //       mainAxisAlignment: MainAxisAlignment.center,
+        //       crossAxisAlignment: CrossAxisAlignment.end,
+        //       children: [
+        //         Container(color: Colors.green, width: 100, height: 100,),
+        //         Container(color: Colors.purple, width: 100, height: 100,)
+        //       ],
+        //     )
+        //   ],
+        // )

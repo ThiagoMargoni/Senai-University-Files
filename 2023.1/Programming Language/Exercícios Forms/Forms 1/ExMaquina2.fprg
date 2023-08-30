@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="danna"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-02-06 07:38:00 "/>
+        <attribute name="created" value="ZGFubmE7REFOTkE7MjAyMy0wMi0wNjsiMDU6MDQ6MzMgIjsyMDUz"/>
+        <attribute name="edited" value="ZGFubmE7REFOTkE7MjAyMy0wMi0wNjsiMDU6MDU6MzkgIjsxO2Rhbm5hO0RBTk5BOzIwMjMtMDItMDY7IjAzOjMwOjMxICI7RXhNYXF1aW5hLmZwcmc7NTcxNg=="/>
+        <attribute name="edited" value="ZGFubmE7REFOTkE7MjAyMy0wMi0wNjsiMDU6MTQ6NDMgIjszOzIxNjU="/>
+        <attribute name="edited" value="ZHNhZG07RVNONTAxRDEyNTM2OTY7MjAyMy0wMi0wNjsiMDc6Mzg6MDAgIjs3OzI2Mzk="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="resposta, texto, bomba" type="String" array="False" size=""/>
+            <declare name="baixo, max, atual" type="Integer" array="False" size=""/>
+            <assign variable="atual" expression="0"/>
+            <assign variable="max" expression="10"/>
+            <assign variable="baixo" expression="3"/>
+            <assign variable="bomba" expression="&quot;desligada&quot;"/>
+            <assign variable="texto" expression="&quot;ligar&quot;"/>
+            <assign variable="resposta" expression="&quot;&quot;"/>
+            <while expression="resposta != &quot;sair&quot;">
+                <if expression="resposta = &quot;&quot;">
+                    <then>
+                        <output expression="&quot;Digite 'sair' para sair ou 'NA' para &quot;&amp;texto&amp;&quot; a m&#225;quina&quot;" newline="True"/>
+                    </then>
+                    <else>
+                        <if expression="atual &lt; max">
+                            <then>
+                                <output expression="&quot;Digite 'sair' para sair, 'NA' para &quot;&amp;texto&amp;&quot; a m&#225;quina ou 'continuar' para a bomba continuar &quot;&amp;bomba" newline="True"/>
+                            </then>
+                            <else>
+                                <output expression="&quot;Digite 'sair' para sair ou esvazie o reservat&#243;rio para ligar a m&#225;quina&quot;" newline="True"/>
+                            </else>
+                        </if>
+                    </else>
+                </if>
+                <input variable="resposta"/>
+                <if expression="resposta = &quot;NA&quot; || resposta = &quot;sair&quot; || resposta = &quot;continuar&quot;">
+                    <then>
+                        <if expression="resposta != &quot;sair&quot; &amp;&amp; atual &lt; max">
+                            <then>
+                                <if expression="resposta = &quot;NA&quot;">
+                                    <then>
+                                        <if expression="texto = &quot;ligar&quot;">
+                                            <then>
+                                                <assign variable="bomba" expression="&quot;ligada&quot;"/>
+                                                <assign variable="texto" expression="&quot;desligar&quot;"/>
+                                                <output expression="&quot;M&#225;quina Ligada&quot;" newline="True"/>
+                                            </then>
+                                            <else>
+                                                <assign variable="bomba" expression="&quot;desligada&quot;"/>
+                                                <assign variable="texto" expression="&quot;ligar&quot;"/>
+                                                <output expression="&quot;M&#225;quina Desligada&quot;" newline="True"/>
+                                                <if expression="atual &lt; baixo">
+                                                    <then>
+                                                        <output expression="&quot;!!!!Soando Alarme!!!! Reservat&#243;rio Abaixo do N&#237;vel&quot;" newline="True"/>
+                                                    </then>
+                                                    <else>
+                                                        <output expression="&quot;Bomba desligada, tudo nos conformes&quot;" newline="True"/>
+                                                    </else>
+                                                </if>
+                                            </else>
+                                        </if>
+                                    </then>
+                                    <else>
+                                        <if expression="bomba = &quot;ligada&quot;">
+                                            <then>
+                                                <assign variable="atual" expression="atual+1"/>
+                                                <if expression="atual = max">
+                                                    <then>
+                                                        <output expression="&quot;!!!!O Reservat&#243;rio est&#225; cheio!!!!! Desligando M&#225;quina&quot;" newline="True"/>
+                                                        <assign variable="bomba" expression="&quot;desligada&quot;"/>
+                                                    </then>
+                                                    <else>
+                                                        <output expression="&quot;O reservat&#243;rio est&#225; &quot;&amp;atual&amp;&quot;/&quot;&amp;max&amp;&quot; cheio&quot;" newline="True"/>
+                                                    </else>
+                                                </if>
+                                            </then>
+                                            <else>
+                                                <if expression="atual &lt; baixo">
+                                                    <then>
+                                                        <output expression="&quot;!!!!Soando Alarme!!!! Reservat&#243;rio Abaixo do N&#237;vel&quot;" newline="True"/>
+                                                    </then>
+                                                    <else>
+                                                        <output expression="&quot;Bomba desligada, tudo nos conformes&quot;" newline="True"/>
+                                                    </else>
+                                                </if>
+                                            </else>
+                                        </if>
+                                    </else>
+                                </if>
+                            </then>
+                            <else>
+                                <if expression="resposta != &quot;sair&quot;">
+                                    <then>
+                                        <output expression="&quot;Reservat&#243;rio completamente cheio, a m&#225;quina permanecer&#225; desligada at&#233; o reservat&#243;rio estar abaixo do m&#225;ximo&quot;" newline="True"/>
+                                    </then>
+                                    <else>
+                                        <output expression="&quot;Saindo do Programa&quot;" newline="True"/>
+                                    </else>
+                                </if>
+                            </else>
+                        </if>
+                    </then>
+                    <else>
+                        <output expression="&quot;Favor digitar uma das op&#231;&#245;es&quot;" newline="True"/>
+                    </else>
+                </if>
+            </while>
+        </body>
+    </function>
+</flowgorithm>

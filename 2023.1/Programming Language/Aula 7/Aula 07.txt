@@ -1,0 +1,117 @@
+#COLEÇÕES
+#Não confunda catraca de canhão com conhaque de alcatrão
+# LISTAS ==> []  sequencia por indexador numeral totalmente mutável
+# TUPLAS ==> ()  sequencia por indexador numeral não mutável, permite concatenar mais dados mas nunca remoção ou alteração do item presente
+# DICIONARIOS ==> {} coleção por indexador de chave totalmente mutável
+# CONJUNTOS ==> set coleções mutáveis, porém, não são indexadas
+
+'''
+#criação de dicionários
+dicionarioVazio={} #método explicito
+print(type(dicionarioVazio))
+dicionarioVazio1=dict()#construtor através da classe
+print(type(dicionarioVazio1))
+localizacao = dict({"Lat": -22.817087,"Long": -47.069750})
+print(localizacao)
+print(localizacao["Lat"]) #nesse caso o item é acessado pela chave "Lat"
+print(localizacao["Long"]) #nesse caso o item e acessado pela "Long"
+#print(localizacao["long"]) #o que retorna se passar a chave errada
+
+# retornar o tamanho do dicionario
+print(len(localizacao))
+'''
+
+'''
+#método get
+localizacao = {"Lat": -22.817087,"Long": -47.069750}
+print(localizacao.get("Lat"))
+print(localizacao.get("long")) #bem melhor procurar a chave com o método get
+'''
+'''
+#pertinencia in e not in
+localizacao = {"Lat": -22.817087,"Long": -47.069750}
+if "Lat" in localizacao:
+    print("V")
+else:
+    print("N")
+if "Cidade" not in localizacao:
+    print("V")
+else:
+    print("N")
+'''
+'''
+#adicionar item
+localizacao = {"Lat": -22.817087,"Long": -47.069750}
+localizacao["Cidade"] = "Campinas"
+print(localizacao)
+'''
+
+'''
+#métodos e funções importantes para dicionarios
+localizacao = {"Lat": -22.817087,"Long": -47.069750, "Cidade" : "Campinas", "Res" : False}
+print(localizacao.items()) #retorna todos as chaves com os itens
+print(localizacao.keys()) #retorna só as chaves
+print(localizacao.values())#retorna os valores
+print(len(localizacao))#retorna a quantidade de itens
+localizacao1=localizacao.copy() #faz cópias
+print(localizacao)
+print(localizacao1)
+print(localizacao1.pop("Res")) #remove e retorna o valor selecionado
+print(localizacao)
+print(localizacao1)
+'''
+'''
+localizacao = {"Lat": -22.817087,"Long": -47.069750, "Cidade" : "Campinas", "Res" : False}
+print(localizacao)
+del localizacao["Res"] # comando del também apaga um item do dicionário através da chave
+print(localizacao)
+itemApagado=(localizacao.popitem())#método popitem apaga o último item do dicionário e retorna seu valor como uma tupla
+print(itemApagado)
+print(localizacao)
+localizacao1={"Bairro" : "Champs Elysees" , "CEP" : "04511-203"}
+localizacao.update(localizacao1) #concatenar dois dicionarios
+print(localizacao)
+'''
+
+'''
+#ITERANDO SOBRE DICIONÁRIOS
+localizacao = {"Lat": -22.817087,"Long": -47.069750, "Cidade" : "Campinas", "Res" : False}
+# iterando sobre chaves
+for chaves in localizacao.keys():
+    print(chaves, end=" - ")
+print()
+# iterando sobre valores
+for valor in localizacao.values():
+    print(valor, end=" - ")
+print()
+# iterando sobre chaves e valores
+for itens in localizacao.items(): #lembrando que o item retornado é um tupla
+    print(itens, end=" - ")
+print()
+'''
+'''
+### CONJUNTOS
+#criação de conjuntos
+a=set() #criando a partir de um construtor
+print(a)
+a.add(1) #adicionando os elementos
+print(a)
+a.add((2,3,4)) #adicionando itens ao conjunto criado ==> nesse caso acrescentando uma lista
+print(a)
+a.add(4) #
+print(a)
+a.add((2,3,4))#adicionando a mesma tupla
+print (a)
+a.remove((2,3,4))#removendo elementos
+b={2,3,5,6,7,8,9,10}
+a.update(b)# União de dois conjuntos a e b
+print("Conjunto a : " , a)
+c={3,6,12}
+print("Diferença entre a e c: ", a-c) # diferença entre a e c é o resultado dos elementos presentes em a que não estão em c
+print("Diferença entre a e c: ", a.difference(c))
+print("União entre a e c: ", a|c) # união entre a e c
+print("União entre a e c: ", a.union(c))
+print("intersecção entre a e c: ",a & c) #intersecção entre a e c é o resultado somente dos presentes nos dois conjuntos
+print("intersecção entre a e c: ",a.intersection(c))
+'''
+

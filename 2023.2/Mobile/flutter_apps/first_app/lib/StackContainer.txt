@@ -1,0 +1,25 @@
+Stack(
+          alignment: AlignmentDirectional.center,
+          children: [
+            Container(
+              color: Colors.white,
+              width: 800,
+              height: 800,
+            ),
+             Container(
+              color: Colors.red,
+              width: 600,
+              height: 600,
+            ),
+             Container(
+              color: Colors.green,
+              width: 400,
+              height: 400,
+            ),
+             Container(
+              color: Colors.black,
+              width: 200,
+              height: 200,
+            )
+          ],
+        )

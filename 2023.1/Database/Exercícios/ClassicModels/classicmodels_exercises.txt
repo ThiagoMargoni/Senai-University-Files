@@ -1,0 +1,41 @@
+/*a)*/ select * from employees e 
+where e.employeeNumber in (
+	select c.salesRepEmployeeNumber from customers c
+);
+
+/*b)*/ select c.customerNumber, c.customerName, count(o.customerNumber) total_compras
+from customers c
+inner join orders o on o.customerNumber = c.customerNumber
+group by o.customerNumber;
+
+/*d)*/ select o.officecode, o.addressline1, count(e.officecode) total_funcionarios
+from employees e
+inner join offices o on e.officecode = o.officecode
+group by e.officecode;
+
+/*e)*/ select e.employeenumber, e.firstname, e.lastname, count(c.salesrepemployeenumber) total_vendas
+from employees e 
+inner join customers c on c.salesrepemployeenumber = e.employeenumber
+group by c.salesrepemployeenumber;
+
+/*f)*/ select od.productcode, p.productname, count(od.productcode) quantidade_comprada
+from orderdetails od
+inner join products p on od.productcode = p.productcode
+group by od.productcode 
+order by quantidade_comprada desc limit 5;
+
+/*g)*/ select * from (
+	select e.employeenumber, concat(e.firstname,' ',e.lastname) nome_completo , count(c.salesrepemployeenumber) total_aparicao 
+    from customers c
+    inner join employees e on c.salesrepemployeenumber = e.employeenumber
+	group by c.salesrepemployeenumber
+) a
+where total_aparicao > 5
+order by total_aparicao asc;
+
+/*h)*/ select * from customers c
+inner join payments p on p.customernumber = c.customernumber
+where p.amount in (
+	select amount from payments
+)
+order by amount desc limit 5 

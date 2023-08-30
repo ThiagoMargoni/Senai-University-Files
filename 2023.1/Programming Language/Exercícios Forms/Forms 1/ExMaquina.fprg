@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="danna"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-02-06 04:58:19 "/>
+        <attribute name="created" value="ZGFubmE7REFOTkE7MjAyMy0wMi0wNjsiMDM6MzA6MzEgIjsyMDQ4"/>
+        <attribute name="edited" value="ZGFubmE7REFOTkE7MjAyMy0wMi0wNjsiMDQ6NTg6MTkgIjs1OzIxNzc="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="resposta, texto" type="String" array="False" size=""/>
+            <assign variable="texto" expression="&quot;ligar&quot;"/>
+            <assign variable="resposta" expression="&quot;&quot;"/>
+            <while expression="resposta != &quot;sair&quot;">
+                <output expression="&quot;Digite 'sair' para sair ou 'NA' para &quot;&amp;texto&amp;&quot; a m&#225;quina&quot;" newline="True"/>
+                <input variable="resposta"/>
+                <if expression="resposta = &quot;NA&quot; || resposta = &quot;sair&quot;">
+                    <then>
+                        <if expression="resposta = &quot;NA&quot;">
+                            <then>
+                                <if expression="texto = &quot;ligar&quot;">
+                                    <then>
+                                        <assign variable="texto" expression="&quot;desligar&quot;"/>
+                                        <output expression="&quot;M&#225;quina Ligada&quot;" newline="True"/>
+                                    </then>
+                                    <else>
+                                        <assign variable="texto" expression="&quot;ligar&quot;"/>
+                                        <output expression="&quot;M&#225;quina Desligada&quot;" newline="True"/>
+                                    </else>
+                                </if>
+                            </then>
+                            <else/>
+                        </if>
+                    </then>
+                    <else>
+                        <output expression="&quot;Favor digitar uma das op&#231;&#245;es&quot;" newline="True"/>
+                    </else>
+                </if>
+            </while>
+        </body>
+    </function>
+</flowgorithm>
