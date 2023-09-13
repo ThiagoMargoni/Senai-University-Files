@@ -1,11 +1,15 @@
 from django.urls import path
 from .views import *
+from rest_framework.routers import DefaultRouter
 
-urlpatterns = [
-    path('location/', LocationAPIView.as_view(), name='location'),
-    path('location/<int:id>', LocationAPIView.as_view(), name='locationById'),
-    path('episode/', EpisodeAPIView.as_view(), name='episode'),
-    path('episode/<int:id>', EpisodeAPIView.as_view(), name='episodeById'),
-    path('character/', CharacterAPIView.as_view(), name='character'),
-    path('character/<int:id>', CharacterAPIView.as_view(), name='characterById'),
-]
+router = DefaultRouter()
+router.register(r'location', LocationAPIView)
+
+urlpatterns = router.urls
+
+nameList = ['episode', 'character']
+viewName = [EpisodeAPIView, CharacterAPIView]
+
+for i in range(len(nameList)):
+    urlpatterns.append(path(f'{nameList[i]}/', viewName[int(i/2)].as_view(), name=f'{nameList[i]}'))
+    urlpatterns.append(path(f'{nameList[i]}/<int:id>', viewName[int(i/2)].as_view(), name=f'{nameList[i]}ById'),)
