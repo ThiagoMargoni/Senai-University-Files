@@ -23,7 +23,7 @@ class House {
 
 void main() {
   House myHouse = House();
-  myHouse.color = 'blue';
+  myHouse.color = 'Blue';
   myHouse.price = 1249343.00;
 
   print(
@@ -32,4 +32,8 @@ void main() {
   myHouse.open_door();
   myHouse.open_window();
   myHouse.open_house(true);
+
+  House house2 = House();
+  house2.color = 'Red';
+  print(house2);
 }
