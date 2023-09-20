@@ -9,7 +9,7 @@ void convert(double value, String answer) {
     symbol = '\$';
   } else if (answer == '2') {
     converted_value = value * 4.85;
-    symbol = '€';
+    symbol = 'EUR';
   } else {
     converted_value = value * 5.43;
     symbol = 'CHF';
