@@ -10,5 +10,5 @@ class EquipamentSerializer(serializers.ModelSerializer):
 class CommentsSerializer(serializers.ModelSerializer):
     class Meta:
         many = True
-        model = Equipament
+        model = Comment
         fields = '__all__'
