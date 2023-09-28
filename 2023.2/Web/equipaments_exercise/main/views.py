@@ -39,7 +39,7 @@ class CommentsAPIView(ModelViewSet):
     filterset_class = CommentFilter
     # filterset_fields = ['comment', 'price', 'user_id', 'equipament_id']
     http_method_names = ['get', 'post', 'put', 'patch']
-    permission_classes = (IsAuthenticated, )
+    # permission_classes = (IsAuthenticated, )
 
     @api_view(['GET'])
     def order_by_username(request, id):
