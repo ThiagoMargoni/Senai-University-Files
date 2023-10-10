@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+from datetime import datetime, date
 
 # Create Custom User
 from django.contrib.auth.models import User
@@ -56,6 +57,12 @@ class Availability(models.Model):
     station = models.CharField(max_length=100,choices=[('1', 'Posto 1'), ('2', 'Posto 2')])
     date = models.DateField(null=False)
 
+    @property
+    def is_available(self):
+        if datetime.now().date() > self.date or self.status == 'U':
+            return False
+        return True
+    
 class Maintenance(models.Model):
     STATUS = [
         ('IP', 'In Progress'),
