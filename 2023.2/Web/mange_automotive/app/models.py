@@ -57,15 +57,23 @@ class Availability(models.Model):
     date = models.DateField(null=False)
 
 class Maintenance(models.Model):
+    STATUS = [
+        ('IP', 'In Progress'),
+        ('F', 'Finished'),
+        ('C', 'Canceled')
+    ]
+
     user = models.ForeignKey(MyUser, related_name='user_maintenance', on_delete=models.CASCADE)
     automobile = models.ForeignKey(Automobile, related_name='automobile_maintenance', on_delete=models.CASCADE)
     dropoff_date = models.ForeignKey(Availability, related_name='dropoff_date', on_delete=models.CASCADE) 
     pickup_date = models.DateField(null=True)
+    creation_date = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=100, choices=STATUS, default='IP')
 
 class MaintenanceService(models.Model):
     service = models.ForeignKey(Service, related_name='service_maintenance_service', on_delete=models.CASCADE)
     employee = models.ForeignKey(MyUser, related_name='user_maintenance_service', on_delete=models.CASCADE)
-    total = models.DecimalField(max_digits=10,decimal_places=2, null=True, blank=True)
+    total = models.DecimalField(max_digits=10,decimal_places=2, default = 0)
 
     def save(self, *args, **kwargs):
         self.total = self.service.service_price
@@ -74,7 +82,7 @@ class MaintenanceService(models.Model):
 class MaintenanceProduct(models.Model):
     product = models.ForeignKey(Product, related_name='product_maintenance_product', on_delete=models.CASCADE)
     quantity = models.IntegerField(validators=[MinValueValidator(1)])
-    total = models.DecimalField(max_digits=10,decimal_places=2, null=True, blank=True)
+    total = models.DecimalField(max_digits=10,decimal_places=2, default = 0)
 
     def save(self, *args, **kwargs):
         self.total = self.quantity * self.product.sale_price
@@ -97,9 +105,9 @@ class Payment(models.Model):
     type_payment = models.CharField(max_length=100,choices=TYPES)
     maintenance = models.ForeignKey(Maintenance, related_name='payment_maintenance', on_delete=models.CASCADE)
     discount = models.DecimalField(max_digits=10,decimal_places=2, validators=[MinValueValidator(0.01), MaxValueValidator(1)])
-    total = models.DecimalField(max_digits=10,decimal_places=2)
+    total = models.DecimalField(max_digits=10,decimal_places=2, default = 0)
     total_discount = models.DecimalField(max_digits=10,decimal_places=2, null=True, blank=True)
-    status = models.CharField(max_length=100, choices=STATUS, default='A')
+    status = models.CharField(max_length=100, choices=STATUS, default='P')
 
     def save(self, *args, **kwargs):
         self.total_discount = self.total-(self.total*self.discount)
