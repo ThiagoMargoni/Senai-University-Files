@@ -3,14 +3,14 @@ from .views import *
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register(r'user', MyUserAPIView)
-router.register(r'service', ServiceAPIView)
-router.register(r'product', ProductAPIView)
-router.register(r'automobile', AutomobileAPIView)
-router.register(r'availability', AvailabilityAPIView)
-router.register(r'maintenance', MaintenanceAPIView)
-router.register(r'maintenance_service', MaintenanceServiceAPIView)
-router.register(r'maintenance_product', MaintenanceProductAPIView)
-router.register(r'payment', PaymentAPIView)
+router.register(r'user', MyUserView)
+router.register(r'service', ServiceView)
+router.register(r'product', ProductView)
+router.register(r'automobile', AutomobileView)
+router.register(r'availability', AvailabilityView)
+router.register(r'maintenance', MaintenanceView)
+router.register(r'maintenance_service', MaintenanceServiceView)
+router.register(r'maintenance_product', MaintenanceProductView)
+router.register(r'payment', PaymentView)
 
 urlpatterns = router.urls
