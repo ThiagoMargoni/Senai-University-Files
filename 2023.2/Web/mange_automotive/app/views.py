@@ -4,7 +4,7 @@ from rest_framework.viewsets import ModelViewSet
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import OrderingFilter
 from .filters import *
-from rest_framework.permissions import IsAuthenticated, DjangoModelPermissionsOrAnonReadOnly
+from rest_framework.permissions import IsAuthenticated, DjangoModelPermissionsOrAnonReadOnly, SAFE_METHODS
 from django.db.models import F, Sum
 
 from rest_framework.decorators import action, api_view
@@ -17,7 +17,7 @@ from restfw_composed_permissions.base import BaseComposedPermission
 class UserReadOnly(BaseComposedPermission):
     def has_permission(self, request, view):
         if request.user.is_authenticated:
-            return True
+            return request.method in SAFE_METHODS
         return False
     
     def has_object_permission(self, request, view, obj):
@@ -28,7 +28,7 @@ class UserReadOnly(BaseComposedPermission):
 class AuthorAndAdminOrReadOnly(BaseComposedPermission):
     def has_permission(self, request, view):
         if request.user.is_authenticated:
-            return True
+            return request.method in SAFE_METHODS
         return False
     
     def has_object_permission(self, request, view, obj):
@@ -39,17 +39,29 @@ class AuthorAndAdminOrReadOnly(BaseComposedPermission):
             return True
         
         return False
-    
-class IsMasterOrReadOnly(BaseComposedPermission):
+
+class CreateUserPermission(BaseComposedPermission):
     def has_permission(self, request, view):
-        return True
+        return request.method in SAFE_METHODS or request.method == 'POST'
     
     def has_object_permission(self, request, view, obj):
-        if obj.userFk.type == "M":
+        if MyUser.objects.filter(user=request.user.id).values('type') == "M":
             return True
         
         return False
 
+class IsMasterOrReadOnly(BaseComposedPermission):
+    def has_permission(self, request, view):
+        return request.method in SAFE_METHODS
+    
+    def has_object_permission(self, request, view, obj):
+        if request.user.is_superuser:
+            return True
+
+        if obj.user.id == request.user.id:
+            return True
+        
+        return False
 
 class MyUserView(ModelViewSet):
     queryset = MyUser.objects.all()
@@ -58,6 +70,16 @@ class MyUserView(ModelViewSet):
     filter_backends = [DjangoFilterBackend, OrderingFilter]
     ordering_fields = '__all__'
     filterset_class = MyUserFilter
+    permission_classes = (CreateUserPermission, )
+    
+    def get_queryset(self):
+        user = self.request.user
+        queryset = None
+        if user.is_superuser:
+            queryset = MyUser.objects.all()
+        else:
+            queryset = MyUser.objects.filter(user__username=user.username)
+        return queryset 
 
 class ServiceView(ModelViewSet):
     queryset = Service.objects.all()
@@ -66,7 +88,7 @@ class ServiceView(ModelViewSet):
     filter_backends = [DjangoFilterBackend, OrderingFilter]
     ordering_fields = '__all__'
     filterset_class = ServiceFilter
-    permission_classes = (DjangoModelPermissionsOrAnonReadOnly)
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
 
 class ProductView(ModelViewSet):
     queryset = Product.objects.all()
@@ -75,13 +97,12 @@ class ProductView(ModelViewSet):
     filter_backends = [DjangoFilterBackend, OrderingFilter]
     ordering_fields = '__all__'
     filterset_class = ProductFilter
-    permission_classes = (DjangoModelPermissionsOrAnonReadOnly)
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
 
     @action(detail=False, methods=['GET'])
     def get_five_less(self, request):
         user = self.request.user
         user_role = MyUser.objects.filter(user=user.id).values('type')
-        
         if user_role == 'M':
             found = Product.objects.filter(quantity__lte=5)
             serializer = ProductSerializer(found, many=True)
@@ -96,7 +117,7 @@ class AutomobileView(ModelViewSet):
     filter_backends = [DjangoFilterBackend, OrderingFilter]
     ordering_fields = '__all__'
     filterset_class = AutomobileFilter
-    permission_classes = (IsAuthenticated)
+    permission_classes = (IsAuthenticated,)
 
 class AvailabilityView(ModelViewSet):
     queryset = Availability.objects.all()
@@ -105,7 +126,7 @@ class AvailabilityView(ModelViewSet):
     filter_backends = [DjangoFilterBackend, OrderingFilter]
     ordering_fields = '__all__'
     filterset_class = AvailabilityFilter
-    permission_classes = (IsMasterOrReadOnly)
+    permission_classes = (IsMasterOrReadOnly,)
 
 class MaintenanceView(ModelViewSet):
     queryset = Maintenance.objects.all()
@@ -114,7 +135,7 @@ class MaintenanceView(ModelViewSet):
     filter_backends = [DjangoFilterBackend, OrderingFilter]
     ordering_fields = '__all__'
     filterset_class = MaintenanceFilter
-    permission_classes = (AuthorAndAdminOrReadOnly)
+    permission_classes = (AuthorAndAdminOrReadOnly,)
 
     def get_queryset(self):
         user = self.request.user
@@ -163,7 +184,7 @@ class MaintenanceServiceView(ModelViewSet):
     filter_backends = [DjangoFilterBackend, OrderingFilter]
     ordering_fields = '__all__'
     filterset_class = MaintenanceServiceFilter
-    permission_classes = (UserReadOnly)
+    permission_classes = (UserReadOnly,)
 
     def get_queryset(self):
         user = self.request.user
@@ -181,7 +202,7 @@ class MaintenanceProductView(ModelViewSet):
     filter_backends = [DjangoFilterBackend, OrderingFilter]
     ordering_fields = '__all__'
     filterset_class = MaintenanceProductFilter
-    permission_classes = (UserReadOnly)
+    permission_classes = (UserReadOnly,)
 
     def create(self, request, *args, **kwargs):
         data = request.data
@@ -229,7 +250,7 @@ class PaymentView(ModelViewSet):
     filter_backends = [DjangoFilterBackend, OrderingFilter]
     ordering_fields = '__all__'
     filterset_class = PaymentFilter
-    permission_classes = (UserReadOnly)
+    permission_classes = (UserReadOnly,)
 
     def create(self, request, *args, **kwargs):
         data = request.data
