@@ -8,11 +8,7 @@ class Components {
   void show() => print(
       'Informações do componente: \nNome: ${this.name}, \nValue: ${this.value}, \nQuantity: ${this.quantity}');
 
-  void connect() {
-    double sum;
-    sum = value * quantity;
-    print('O valor dos componentes é ${sum}');
-  }
+  void connect() => print('O valor dos componentes é ${value * quantity}');
 }
 
 class Resistor extends Components {
@@ -31,13 +27,11 @@ class Inductor extends Components {
 }
 
 class Diode extends Components {
-  Diode(String name, double value, int quantity)
-      : super(name, value, quantity);
+  Diode(String name, double value, int quantity) : super(name, value, quantity);
 }
 
 class Led extends Components {
-  Led(String name, double value, int quantity)
-      : super(name, value, quantity);
+  Led(String name, double value, int quantity) : super(name, value, quantity);
 }
 
 void main() {

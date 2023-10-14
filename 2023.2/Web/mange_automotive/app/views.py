@@ -128,6 +128,12 @@ class AvailabilityView(ModelViewSet):
     filterset_class = AvailabilityFilter
     permission_classes = (IsMasterOrReadOnly,)
 
+    def create(self, request, *args, **kwargs):
+        ...
+
+    def update(self, request, *args, **kwargs):
+        ...
+
 class MaintenanceView(ModelViewSet):
     queryset = Maintenance.objects.all()
     serializer_class = MaintenanceSerializer
@@ -210,7 +216,8 @@ class MaintenanceProductView(ModelViewSet):
         if data['quantity'] <= Product.objects.filter(id=data['productFk']).values('quantity') or data['quantity'] == 0:
             response = super(MaintenanceProductView, self).create(request,*args,**kwargs)
 
-            if response.status_code == 201:   
+            if response.status_code == 201:  
+                Product.objects.filter(id=data['productFk']).update(quantity=F('quantity') - data['quantity']) 
                 return Response(status=201,data=response.data)
             else:
                 return Response(status=500,data='Error when saving the product in the maintenance!')
@@ -227,6 +234,7 @@ class MaintenanceProductView(ModelViewSet):
             response = super(MaintenanceProductView, self).update(request,*args,**kwargs)
 
             if response.status_code == 201:   
+                Product.objects.filter(id=data['productFk']).update(quantity=F('quantity') - data['quantity'])
                 return Response(status=201,data=response.data)
             else:
                 Product.objects.filter(id=data['productFk']).update(quantity=F('quantity') - old_quantity)
