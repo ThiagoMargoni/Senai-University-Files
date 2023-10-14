@@ -217,7 +217,6 @@ class MaintenanceProductView(ModelViewSet):
             response = super(MaintenanceProductView, self).create(request,*args,**kwargs)
 
             if response.status_code == 201:  
-                Product.objects.filter(id=data['productFk']).update(quantity=F('quantity') - data['quantity']) 
                 return Response(status=201,data=response.data)
             else:
                 return Response(status=500,data='Error when saving the product in the maintenance!')
@@ -234,7 +233,6 @@ class MaintenanceProductView(ModelViewSet):
             response = super(MaintenanceProductView, self).update(request,*args,**kwargs)
 
             if response.status_code == 201:   
-                Product.objects.filter(id=data['productFk']).update(quantity=F('quantity') - data['quantity'])
                 return Response(status=201,data=response.data)
             else:
                 Product.objects.filter(id=data['productFk']).update(quantity=F('quantity') - old_quantity)
