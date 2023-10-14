@@ -128,11 +128,11 @@ class AvailabilityView(ModelViewSet):
     filterset_class = AvailabilityFilter
     permission_classes = (IsMasterOrReadOnly,)
 
-    def create(self, request, *args, **kwargs):
-        ...
+    # def create(self, request, *args, **kwargs):
+    #     ...
 
-    def update(self, request, *args, **kwargs):
-        ...
+    # def update(self, request, *args, **kwargs):
+    #     ...
 
 class MaintenanceView(ModelViewSet):
     queryset = Maintenance.objects.all()
