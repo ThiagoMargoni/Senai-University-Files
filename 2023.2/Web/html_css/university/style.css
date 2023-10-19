@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+html, body {
+    height: 100%;
+}
+
+.login {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+}
+
+.login_panel {
+    height: 100vh;
+    width: 50vw;
+    background-color: yellow;
+}
+
+.logo_panel {
+    height: 100vh;
+    width: 50vw;
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
