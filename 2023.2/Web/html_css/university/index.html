@@ -9,12 +9,35 @@
 <body>
     <main class="login">
         <section class="login_panel">
-            
+            <div class="login_content">
+                <div class="login_title">
+                    <h2>Login</h2>
+                    <a href="">Cadastrar</a>
+                </div>
+
+                <form class="login_form" onsubmit="login_submit(event)">
+                    <div class="form_content">
+                        <label for="e">E-mail</label>
+                        <input type="email" class="login_input" id="e" placeholder="Type your e-mail">
+                    </div>
+                    
+                    <div class="form_content">
+                        <label for="p">Passowrd</label>
+                        <input type="password" class="login_input" id="p" placeholder="Type your Password">
+                    </div>
+
+                    <div class="form_button">
+                        <button type="submit" id="login_button">Send</button>
+                    </div>
+                </form>
+            </div>
         </section>
 
         <section class="logo_panel">
-            <img src="files/images/logo.jpg" alt="">
+            <img class="logo_content animation-up" src="files/images/logo.jpg" alt="">
+            <h2 class="logo_content animation-up">Mobile University</h2>
         </section>
     </main>
 </body>
+<script src="./script.js"></script>
 </html>

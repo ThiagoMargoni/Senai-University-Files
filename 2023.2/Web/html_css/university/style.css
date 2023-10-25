@@ -1,8 +1,15 @@
+@font-face {
+    font-family: 'Syne';
+    src: './files/fonts/SyneMono-Regular.ttf';
+    font-weight: normal;
+}
+
 * {
     margin: 0;
     padding: 0;
     -webkit-appearance: none;
     -moz-appearance: none;
+    font-family: 'Syne';
 }
 
 html, body {
@@ -19,15 +26,96 @@ html, body {
 .login_panel {
     height: 100vh;
     width: 50vw;
-    background-color: yellow;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .logo_panel {
     height: 100vh;
     width: 50vw;
-    background-color: blue;
+    background-color: #231f20;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.logo_content {
+    position: relative;
+    bottom: 50px;
+    color: white;
+}
+
+.login_content {
+    background-color: bisque;
+    width: 100%;
+    height: fit-content;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.login_title { 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.form_content {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.login_input {
+    height: 35px;
+    border-radius: 4px;
+    border: 1px solid #5e6e6e6c;
+}
+
+.login_input:focus {
+    outline: 0;
+    background: linear-gradient(
+        135deg,
+        #10ddd31a,
+        #02a3e64d
+    );
+}
+
+#login_button {
+    width: 100%;
+    height: 25px;
+    font-weight: bold;
+    bottom: none;
+    border-radius: 5px;
+    color: white;
+    background: linear-gradient(
+        135deg,
+        rgba(16,221,221,0.849),
+        rgba(2,165,230,0.87)
+    );
+}
+
+#login_button:hover {
+    transform: scale(1.03);
+    transition: 0.3s;
+}
+
+@keyframes up {
+    from {
+        opacity: 0;
+        transform: translateY(-40px);
+    } to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.animation-up {
+    animation-name: up; 
+    animation-duration: 1200ms;
+    animation-fill-mode: backwards;
 }
