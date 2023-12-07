@@ -12,17 +12,17 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-            appBar: AppBar(title: const Text('Movie App')),
+            appBar: AppBar(title: const Text('Subject App')),
             body: ListView(
               children: const [
-                Music('Payphone',
-                    'https://cdns-images.dzcdn.net/images/cover/da7418953af2fa393f3038bb80be9edd/350x350.jpg'),
-                Music('Ela Partiu',
-                    'https://cdns-images.dzcdn.net/images/cover/da7418953af2fa393f3038bb80be9edd/350x350.jpg'),
-                Music('Rewrite the Stars',
-                    'https://cdns-images.dzcdn.net/images/cover/da7418953af2fa393f3038bb80be9edd/350x350.jpg'),
-                Music('Alvorada',
-                    'https://cdns-images.dzcdn.net/images/cover/da7418953af2fa393f3038bb80be9edd/350x350.jpg'),
+                Subject('Mobile',
+                    'https://coodesh.com/blog/wp-content/uploads/2021/10/mobile-flutter-1-1152x648.jpg'),
+                Subject('Web',
+                    'https://camo.githubusercontent.com/660d0a0371b579bc2104685019915e6342731d482276c6689a298dbc2c21bb36/687474703a2f2f692e696d6775722e636f6d2f735933497042452e706e673f31'),
+                Subject('IoT',
+                    'https://play-lh.googleusercontent.com/rbiJLPyRpzFpP8C688ebkG9AV1vpej4E2F3BBbMlYwqHxHGixsyBr62Gyeg_jIattOE'),
+                Subject('IA and Big Data',
+                    'https://play-lh.googleusercontent.com/rbiJLPyRpzFpP8C688ebkG9AV1vpej4E2F3BBbMlYwqHxHGixsyBr62Gyeg_jIattOE'),
               ],
             )
         )
@@ -30,10 +30,10 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Music extends StatelessWidget {
+class Subject extends StatelessWidget {
   final String name;
   final String image_link;
-  const Music(this.name, this.image_link, {super.key});
+  const Subject(this.name, this.image_link, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -67,9 +67,9 @@ class Music extends StatelessWidget {
                   ),
                   ElevatedButton(
                       onPressed: () {
-                        print('Saved Music');
+                        print('View button Pressed');
                       },
-                      child: const Icon(Icons.save)
+                      child: const Icon(Icons.remove_red_eye)
                   )
                 ]),
           )
