@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.schemas import get_schema_view
 from django.views.generic import TemplateView
+from djoser.views import TokenDestroyView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -18,5 +19,6 @@ urlpatterns = [
 
     path('', include('app.urls')),
     path('', include('djoser.urls')),
-    path('auth/', include('djoser.urls.authtoken')),
+    path('logout/', TokenDestroyView.as_view(), name='logout'),
+    path('auth/', include('djoser.urls.jwt')),
 ]
