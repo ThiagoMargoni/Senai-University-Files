@@ -1,0 +1,54 @@
+{
+    "intents": [
+        {
+            "tag": "cumprimento",
+            "patterns": [
+                "Oi",
+                "Olá",
+                "Como vai?"
+            ],
+            "responses": [
+                "Olá, sou o assistente talllll, como posso te ajudar?",
+                "Oi, no que posso ser útil?"
+            ],
+            "required": "\n Ou se preferir digite alguma dessas opções: -Procurar uma Viagem -Listar viagens, -Pagamentos, -Minhas Reservas"            
+        },
+        {
+            "tag": "listar",
+            "patterns": [
+                "Listar viagens",
+                "Opções de viagens",
+                "Quais as viagens disponíveis?",
+                "viagens?",
+                "viagem",
+                "opções"
+            ],
+            "responses": [
+                "Ok, aqui está alguma de nossas opções!",
+                "Certo, já vou te informar nossas ofertas!"
+            ],
+            "required": "\n Ou se preferir digite o destino desejado!",
+            "command": "LIST_TRIPS"
+        },
+        {
+            "tag": "procurar",
+            "patterns": [
+                "Procurar uma Viagem",
+                "quero procurar uma viagem",
+                "Encontrar uma viagens",
+                "procurar",
+                "encontrar",
+                "filtrar",
+                "quero uma viagem",
+                "ache uma viagem",
+                "fazer uma viagem"
+            ],
+            "responses": [
+                "Legal, então digite para onde deseja ir?",
+                "Certo, para onde iremos então?"
+            ],            
+            "command": "SEARCH_TRIP"
+        }
+        
+    ]
+}
