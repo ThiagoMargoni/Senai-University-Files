@@ -8,10 +8,10 @@
                 "Como vai?"
             ],
             "responses": [
-                "Olá, sou o assistente talllll, como posso te ajudar?",
+                "Olá, sou o assistente virtual do mangetrips, como posso te ajudar?",
                 "Oi, no que posso ser útil?"
             ],
-            "required": "\n Ou se preferir digite alguma dessas opções: -Procurar uma Viagem -Listar viagens, -Pagamentos, -Minhas Reservas"            
+            "required": "\nOu se preferir digite alguma dessas opções:\n- Procurar uma Viagem\n-Listar viagens\n- Pagamentos\n- Minhas Reservas"            
         },
         {
             "tag": "listar",
@@ -48,7 +48,19 @@
                 "Certo, para onde iremos então?"
             ],            
             "command": "SEARCH_TRIP"
+        },
+        {
+            "tag": "pagamento",
+            "patterns": [
+                "Métodos de Pagamento",
+                "Pagamento",
+                "Maneiras de Pagar",
+                "Métodos de pagamento aceito"
+            ],
+            "responses": [
+                "Claro, aqui estão: \n- Pix\n- Cartão de Crédito\n- Cartão de Débito\n- Boleto"
+            ],
+            "command": "PAYMENT_METHOD"
         }
-        
     ]
 }

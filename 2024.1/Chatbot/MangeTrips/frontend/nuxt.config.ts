@@ -1,13 +1,21 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: true },
+  devtools: { enabled: false },
+  typescript: {
+    typeCheck: true
+  },
   modules: [
-    'nuxt-primevue'
+    'nuxt-primevue',
+    'nuxt-icons'
   ],
   primevue: {
     components: {
       include: ['Button', 'Fieldset', 'Avatar']
     }    
   },
-  css: ['primevue/resources/themes/aura-light-green/theme.css']
+  css: [
+    'primevue/resources/themes/aura-light-green/theme.css',
+    '~/assets/style/global.scss', 
+    '~/assets/style/variables.scss'
+  ]
 })

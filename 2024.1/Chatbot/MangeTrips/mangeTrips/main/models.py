@@ -109,6 +109,7 @@ class Availability(models.Model):
         return self.tripFK.title + '-' + str(self.date)
 
 class ConversationHistory(models.Model):
+    title = models.CharField(max_length=100, blank=True, null=True)
     date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User,related_name='userHistory',on_delete=models.CASCADE)
     lastCommand = models.CharField(max_length=100, blank=True, null=True)

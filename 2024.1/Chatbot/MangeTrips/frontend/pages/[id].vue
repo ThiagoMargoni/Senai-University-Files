@@ -18,12 +18,15 @@
 </template>
 
 <script setup>
+    const router = useRoute();
+    const id = router.params.id;
+
     const dialog = reactive({
         text: '',
         type: '',
         name: '',
         image: '',
-        historyId: null
+        historyId: id
     });
 
     const includeDialog = ((type)=>{
@@ -62,9 +65,34 @@
     const sendMessageEnter = async (e) => {
         if(e.code === "Enter") await sendMessage();
     }
+    
+    const { data } = await useFetch(`http://localhost:8000/conversation_messages/${id}/`, { key: 'getMessageHistory' })
 
+    const dataValue = data.value;
+
+    if(!dataValue) {
+        throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
+    }
+    
     const conversationHistory = ref([])
 
+    for(let index in dataValue) {
+        if(dataValue[index].type === 'Q'){
+            dialog.image = 'user.png';
+            dialog.name = 'Thiago';
+        } else {
+            dialog.image = 'bot.png';
+            dialog.name = 'Bot';
+        }
+
+        dialog.text = dataValue[index].message;
+
+        conversationHistory.value.push(
+            JSON.parse(JSON.stringify(dialog))
+        );   
+    }
+
+    dialog.text = '';
 </script>
 
 <style scoped lang="scss">

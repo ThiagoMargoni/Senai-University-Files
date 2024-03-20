@@ -15,5 +15,5 @@ router.register(r'availability',AvailabilityView)
 urlpatterns = router.urls
 urlpatterns.append( path('tripScore/<int:tripId>/', ScoreAverageView.as_view(), name='trip-score-average'))
 urlpatterns.append( path('conversation_history/<int:user_id>/', ConversationHistoryView.as_view(), name='conversation-history'))
-urlpatterns.append( path('conversation/<int:conversation_id>/', ConversationView.as_view(), name='conversation'))
+urlpatterns.append( path('conversation_messages/<int:conversation_id>/', ConversationView.as_view(), name='conversation'))
 urlpatterns.append( path('chatbot/', ChatBotAPIView.as_view(), name='chatbot'))

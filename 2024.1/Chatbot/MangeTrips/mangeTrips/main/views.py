@@ -15,7 +15,7 @@ from django.db.models import Avg, Q
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser, IsAuthenticated, DjangoModelPermissionsOrAnonReadOnly
 
 from ai import train, chat
-from django.http import JsonResponse
+from rest_framework.response import Response
 
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -152,20 +152,21 @@ class ConversationHistoryView(APIView):
         conversation = ConversationHistory.objects.filter(user=user_id)
 
         if not conversation:
-            return JsonResponse(status=500, data={'content': "Don't have conversations"})
+            return Response(status=404, data={'content': "Don't have conversations"})
 
         serializer = ConversationHistorySerializerWithoutUser(conversation, many=True)
-        return JsonResponse(status=200, data=serializer.data)
+        return Response(status=200, data=serializer.data)
 
 class ConversationView(APIView):
     def get(self, request, conversation_id):
         historyFound = Conversation.objects.filter(history=conversation_id)
 
         if not historyFound:
-            return JsonResponse(status=500, data={'content': "This conversation don't exist"})
+            return Response(status=404, data={'content': "This conversation don't exist"})
 
         serializer = ConversationSerializerWihtotHistory(historyFound, many=True)
-        return JsonResponse(status=200, data=serializer.data)
+
+        return Response(status=200, data=serializer.data)
     
 class ChatBotAPIView(APIView):
     def post(self, request):
@@ -178,7 +179,7 @@ class ChatBotAPIView(APIView):
         try:
             userFound = User.objects.get(pk=userId)
         except ObjectDoesNotExist:
-            return JsonResponse(status=500,data={'content': 'Usuário não encontrado!'})
+            return Response(status=404,data={'content': 'Usuário não encontrado!'})
 
         conversationFound = None
 
@@ -190,7 +191,7 @@ class ChatBotAPIView(APIView):
             try:
                 conversationFound = ConversationHistory.objects.get(pk=conversationId)
             except ObjectDoesNotExist:
-                return JsonResponse(status=500,data={'content': 'Conversa não encontrada!'})
+                return Response(status=404,data={'content': 'Conversa não encontrada!'})
 
         newQuestion = Conversation(type="Q", message=question, history=conversationFound)
         newQuestion.save()
@@ -227,5 +228,5 @@ class ChatBotAPIView(APIView):
         
         serializedAnswer = ConversationSerializer(newAnswer,many=False)
                
-        return JsonResponse(status=201, data=serializedAnswer.data)
+        return Response(status=201, data=serializedAnswer.data)
 
