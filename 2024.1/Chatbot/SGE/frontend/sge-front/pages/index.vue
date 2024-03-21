@@ -32,18 +32,23 @@
 <script lang="ts" setup>
     const { signIn } = useAuth();
 
+    definePageMeta({
+        middleware: 'auth',
+        auth: {
+            navigateAuthenticatedTo: '/home'
+        }
+    });
+
     const credentials = reactive({
         username: '',
         password: ''
     })
 
     const submitLogin = async () => {
-        try {
-            await signIn(credentials, { redirect: false });
+        signIn(credentials, { redirect: false })
+        .then(() => {
             navigateTo('/home')
-        } catch(error) {
-            console.log('Error ' + error);
-        } 
+        }).catch((error) => console.log(error));
     }
 </script>
 
