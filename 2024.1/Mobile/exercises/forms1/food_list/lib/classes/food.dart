@@ -1,5 +1,56 @@
 import 'package:flutter/material.dart';
 
+double total = 0.0;
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Mange Trips',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const Home(),
+    );
+  }
+}
+
+class Home extends StatelessWidget {
+  const Home({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Mange Trips'),
+        ),
+        body: Stack(
+          alignment: Alignment.bottomCenter,
+          children: [
+            ListView(
+              children: [
+                Food('Tacos', 'images/taco.jpg', 10),
+                Food('Prato Feito', 'images/prato_feito.jpg', 50),
+                Food('Hamburguer', 'images/hamburguer.jpg', 30),
+                const SizedBox(
+                  height: 110,
+                )
+              ],
+            ),
+            Container(
+              width: 420,
+              height: 100,
+              color: const Color.fromARGB(255, 203, 198, 198),
+              child: Text('Total: $total')
+            )
+          ],
+        ));
+  }
+}
+
 class Food extends StatefulWidget {
   final String name;
   final String img;
@@ -16,12 +67,12 @@ class Food extends StatefulWidget {
 class Destiny_State extends State<Food> {
   // ignore: non_constant_identifier_names
   int n_food = 0;
-  double total = 0.0;
 
   // ignore: non_constant_identifier_names
   void increment_food() {
     setState(() {
       n_food += 1;
+      total += food_price;
     });
   }
 
@@ -30,6 +81,7 @@ class Destiny_State extends State<Food> {
     if (n_food > 0) {
       setState(() {
         n_food -= 1;
+        total -= food_price;
       });
     }
   }
