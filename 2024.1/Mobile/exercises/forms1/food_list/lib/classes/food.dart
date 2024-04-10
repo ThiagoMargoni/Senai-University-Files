@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Mange Trips',
+      title: 'Mange Food',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -18,53 +18,67 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
 
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Mange Trips'),
+          title: const Text('Mange Food'),
         ),
         body: Stack(
           alignment: Alignment.bottomCenter,
           children: [
             ListView(
               children: [
-                Food('Tacos', 'images/taco.jpg', 10),
-                Food('Prato Feito', 'images/prato_feito.jpg', 50),
-                Food('Hamburguer', 'images/hamburguer.jpg', 30),
+                Food('Tacos', 'images/taco.jpg', 10, callSetState),
+                Food('Prato Feito', 'images/prato_feito.jpg', 50, callSetState),
+                Food('Hamburguer', 'images/hamburguer.jpg', 30, callSetState),
                 const SizedBox(
                   height: 110,
                 )
               ],
             ),
             Container(
+              alignment: Alignment.center,
               width: 420,
               height: 100,
-              color: const Color.fromARGB(255, 203, 198, 198),
-              child: Text('Total: $total')
+              color: Color.fromARGB(255, 88, 120, 206),
+              child: Text(
+                'Total: \$ $total',
+                style: const TextStyle(color: Colors.black, fontSize: 30),
+              )
             )
           ],
-        ));
+        )
+    );
+  }
+
+  void callSetState() {
+    setState((){}); 
   }
 }
-
 class Food extends StatefulWidget {
   final String name;
   final String img;
   // ignore: non_constant_identifier_names
   final double food_price;
+  final Function on_click;
 
-  Food(this.name, this.img, this.food_price, {super.key});
+  Food(this.name, this.img, this.food_price, this.on_click, {super.key});
 
   @override
-  State<Food> createState() => Destiny_State();
+  State<Food> createState() => FoodState();
 }
 
 // ignore: camel_case_types
-class Destiny_State extends State<Food> {
+class FoodState extends State<Food> {
   // ignore: non_constant_identifier_names
   int n_food = 0;
 
@@ -72,7 +86,8 @@ class Destiny_State extends State<Food> {
   void increment_food() {
     setState(() {
       n_food += 1;
-      total += food_price;
+      total += widget.food_price;
+      widget.on_click();
     });
   }
 
@@ -81,7 +96,8 @@ class Destiny_State extends State<Food> {
     if (n_food > 0) {
       setState(() {
         n_food -= 1;
-        total -= food_price;
+        total -= widget.food_price;
+        widget.on_click();
       });
     }
   }
