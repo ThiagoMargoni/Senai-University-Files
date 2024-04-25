@@ -1,0 +1,80 @@
+{
+  "products": [
+    {
+      "id": "0",
+      "name": "Chocolate",
+      "price": "3.50",
+      "qt": "3"
+    },
+    {
+      "id": "1",
+      "name": "Pão",
+      "price": "10.50",
+      "qt": "5"
+    },
+    {
+      "id": "2",
+      "name": "Arroz",
+      "price": "6.40",
+      "qt": "10"
+    },
+    {
+      "id": "3",
+      "name": "Feijão",
+      "price": "23.20",
+      "qt": "2"
+    },
+    {
+      "id": "4a92",
+      "name": "Testing",
+      "price": "23.34",
+      "qt": "11"
+    },
+    {
+      "id": "d6d1",
+      "name": "Testing2",
+      "price": "15.23",
+      "qt": "111"
+    },
+    {
+      "id": "466b",
+      "name": "aaaaa",
+      "price": "123.4",
+      "qt": "13"
+    },
+    {
+      "id": "8816",
+      "name": "olá",
+      "price": "123.1",
+      "qt": "12"
+    },
+    {
+      "id": "5f00",
+      "name": "olaaaaaa",
+      "price": "231",
+      "qt": "213"
+    }
+  ],
+  "users": [
+    {
+      "id": "0",
+      "login": "adm",
+      "password": "adm"
+    },
+    {
+      "id": "1",
+      "login": "thiago",
+      "password": "123"
+    },
+    {
+      "id": "d3ba",
+      "login": "pompom",
+      "password": "123"
+    },
+    {
+      "id": "2a3d",
+      "login": "",
+      "password": ""
+    }
+  ]
+}
