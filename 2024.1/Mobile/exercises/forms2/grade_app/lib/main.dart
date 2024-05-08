@@ -31,15 +31,15 @@ class _HomeState extends State<Home> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const MathWindow())),
+              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const Math())),
               child: const Text('Math Window'),
             ),
             ElevatedButton(
-              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const EnglishWindow())),
+              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const English())),
               child: const Text('English Window'),
             ),
             ElevatedButton(
-              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const PortugueseWindow())),
+              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const Portuguese())),
               child: const Text('Portuguese Window'),
             ),
           ],
