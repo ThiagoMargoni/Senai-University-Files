@@ -1,0 +1,19 @@
+{
+    "home": {
+        "title": "Construa agora seu Mange Bot!",
+        "order": "Quero o meu!"
+    },
+    "build": {
+        "add_cart": "Adicionar no Carrinho"
+    },
+    "header": {
+        "home": "Página Inicial",
+        "build": "Construir",
+        "cart": "Carrinho"
+    },
+    "footer": {
+        "technology": "Crie seu robô com o máximo de tecnologia!",
+        "platform": "A plataforma mais amada do Brasil!",
+        "support": "Atendimento online 24hrs!"
+    }
+}

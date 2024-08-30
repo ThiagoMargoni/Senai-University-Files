@@ -1,0 +1,19 @@
+{
+    "home": {
+        "title": "Build now your Mange Bot!",
+        "order": "Build mine!"
+    },
+    "build": {
+        "add_cart": "Add in Cart"
+    },
+    "header": {
+        "home": "Home",
+        "build": "Build",
+        "cart": "Cart"
+    },
+    "footer": {
+        "technology": "Create your robot with maximum technology!",
+        "platform": "The most loved platform from Brazil!",
+        "support": "On-line support for 24 hours!"
+    }
+}
