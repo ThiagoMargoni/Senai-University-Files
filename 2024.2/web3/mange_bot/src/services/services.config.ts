@@ -3,7 +3,7 @@ export const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const getAxios = () => {
     const createAxios = axios.create({
-        baseURL: '/proxy-api/api',
+        baseURL: BASE_URL + '/api', //'/proxy-api/api',
         timeout: 40000,
         headers: {
             'Content-Type': 'application/json',

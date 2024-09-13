@@ -4,7 +4,7 @@
     import { Part, PartsResponse } from '@/models/part';
     import { getParts } from '@Services/part.service';
     import { ref, reactive, type Ref } from 'vue';
-    import DotLoader from 'vue-spinner/src/DotLoader.vue';
+    // import DotLoader from 'vue-spinner/src/DotLoader.vue';
     import { useCart } from '@/stores/cart';
     
     const availableParts: Ref<PartsResponse> = ref(new PartsResponse());
@@ -57,7 +57,8 @@
         </div>
     </div>
     <div class="loader" v-else>
-        <DotLoader />
+        <div>Estou carregando</div>
+        <!-- <DotLoader /> -->
     </div>
 
 </template>
